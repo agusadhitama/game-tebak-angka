@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Membaca Pikiran</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="app">
+
+<h1>MEMBACA PIKIRAN</h1>
+
+<p class="subtitle">
+Hai, Aku Mouza Assistennya Pak Adhit, Salam Kenal Ya
+</p>
+
+<div class="avatar">
+
+<div class="eye"><div class="pupil"></div></div>
+<div class="eye"><div class="pupil"></div></div>
+
+</div>
+
+<div class="terminal">
+
+<div id="result">
+Masukan angka 1 sampai 10 dibawah ini
+</div>
+
+</div>
+
+<div class="input-area">
+
+<input
+id="angkaInput"
+type="number"
+min="1"
+max="10"
+placeholder="Masukkan angka 1-10"
+/>
+
+<button id="tebakBtn">INPUT</button>
+<button id="resetBtn">RESET</button>
+
+</div>
+
+<div class="stats">
+
+<span>Percobaan: <b id="percobaan">0</b></span>
+<span>Mouza Menang: <b id="kalah">0</b></span>
+<span>Kamu Menang: <b id="menang">0</b></span>
+
+</div>
+
+</div>
+
+<footer class="credit">
+by Agus Satria Adhitama 2026
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
