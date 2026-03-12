@@ -108,6 +108,13 @@ border-radius:50%;
 box-shadow:
 0 0 10px #00ffd5,
 0 0 25px #00ffd5;
+
+animation:blink 4s infinite;
+}
+
+@keyframes blink{
+0%,95%,100%{transform:scaleY(1);}
+97%{transform:scaleY(0.1);}
 }
 
 /* TERMINAL */
@@ -228,4 +235,16 @@ opacity:0.45;
 font-size:13px;
 
 letter-spacing:1px;
+
+}
+
+#result::after{
+content:"|";
+margin-left:5px;
+animation:cursor 1s infinite;
+}
+
+@keyframes cursor{
+0%,50%,100%{opacity:1;}
+25%,75%{opacity:0;}
 }
