@@ -5,8 +5,13 @@
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
+function resizeCanvas(){
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 let nodes = [];
 
@@ -40,9 +45,10 @@ ctx.fill();
 
 });
 
+// draw connections
 for(let i=0;i<nodes.length;i++){
 
-for(let j=i;j<nodes.length;j++){
+for(let j=i+1;j<nodes.length;j++){
 
 let dx = nodes[i].x - nodes[j].x;
 let dy = nodes[i].y - nodes[j].y;
@@ -88,8 +94,10 @@ const y = rect.top + rect.height/2;
 
 const angle = Math.atan2(e.clientY - y, e.clientX - x);
 
+const radius = 12;
+
 p.style.transform =
-`translate(${Math.cos(angle)*15}px,${Math.sin(angle)*15}px)`;
+`translate(${Math.cos(angle)*radius}px,${Math.sin(angle)*radius}px)`;
 
 });
 
@@ -152,6 +160,41 @@ return parseInt(sorted[0][0]);
 
 
 // ===============================
+// AI SCANNING ANIMATION
+// ===============================
+
+function aiScan(callback){
+
+const result = document.getElementById("result");
+
+const scan = [
+"MENGAKSES NEURAL NETWORK...",
+"MENGANALISIS POLA OTAK...",
+"MENGHITUNG PROBABILITAS...",
+"PREDIKSI SIAP..."
+];
+
+let i = 0;
+
+const interval = setInterval(()=>{
+
+result.innerHTML = scan[i];
+
+i++;
+
+if(i === scan.length){
+
+clearInterval(interval);
+callback();
+
+}
+
+},200);
+
+}
+
+
+// ===============================
 // GAME LOGIC
 // ===============================
 
@@ -183,9 +226,7 @@ prediction = Math.floor(Math.random()*10)+1;
 
 }
 
-result.innerHTML="MOUZA MENGANALISIS POLA...";
-
-setTimeout(()=>{
+aiScan(()=>{
 
 result.innerHTML =
 "ANGKA KAMU : "+number+
@@ -207,11 +248,16 @@ result.innerHTML +=
 
 }
 
+let confidence = Math.floor(Math.random()*40)+60;
+
+result.innerHTML +=
+"<br>CONFIDENCE LEVEL : "+confidence+"%";
+
 document.getElementById("percobaan").innerText=percobaan;
 document.getElementById("menang").innerText=menang;
 document.getElementById("kalah").innerText=kalah;
 
-},600);
+});
 
 
 // ===============================
